@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Route} from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import SavedList from './Movies/SavedList';
 import MovieList from './Movies/MovieList';
 import Movie from './Movies/Movie'
@@ -12,14 +12,21 @@ const App = () => {
 
   return (
     <div>
+      
+      {/* <SavedList list={savedList} />
+      <Switch>
+        <Route path="/movies/:id" >
+          <Movie/>
+        </Route>
+        <Route path="/" >
+          <MovieList/>
+        </Route>
+      </Switch> */}
+      
       <SavedList list={savedList} />
-      <Route exact path="/">
-        <MovieList/>
-      </Route>
-
-      <Route exact path="/movies/:movieID">
-        <Movie/>
-      </Route>
+      <Route exact path="/" component={ MovieList } />
+      <Route path="/movies/:id" component={ Movie } />
+      
       {/* <div>Replace this Div with your Routes</div> */}
     </div>
   );
